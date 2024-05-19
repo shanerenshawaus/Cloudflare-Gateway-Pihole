@@ -7,6 +7,7 @@ on:
 jobs:
   retry1:
     name: Cloudflare Gateway
+    environment: default
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
     runs-on: ubuntu-latest
     
