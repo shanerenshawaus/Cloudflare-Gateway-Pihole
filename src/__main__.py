@@ -83,6 +83,8 @@ class CloudflareManager:
 
         # Delete old lists on Cloudflare 
         delete_list_tasks = []
+        cf_lists = await cloudflare.get_lists(self.name_prefix)
+
         for l in cf_lists:
             logger.info(f"Deleting list {l['name']} - ID:{l['id']} ")
             delete_list_tasks.append(cloudflare.delete_list(l["name"], l["id"]))
@@ -95,7 +97,7 @@ class CloudflareManager:
         #     logger.info(f"Creating list {list_name}")
         #     create_list_tasks.append(cloudflare.create_list(list_name, chunk))
     
-        # cf_lists = await asyncio.gather(*create_list_tasks)
+        cf_lists = await asyncio.gather(*create_list_tasks)
 
         cf_policies = await cloudflare.get_firewall_policies(self.name_prefix)
         logger.info(f"Number of policies in Cloudflare: {len(cf_policies)}")
