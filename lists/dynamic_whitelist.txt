@@ -1,3 +1,4 @@
 # connect.facebook.net
 api-js.datadome.co
 www.googleadservices.com
+monitor.clickcease.com
