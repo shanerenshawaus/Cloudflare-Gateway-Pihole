@@ -89,7 +89,7 @@ class CloudflareManager:
             delete_list_tasks.append(cloudflare.delete_list(l["name"], l["id"]))
         await asyncio.gather(*delete_list_tasks)
 
-        Start creating new lists and firewall policy concurrently
+        #Start creating new lists and firewall policy concurrently
         create_list_tasks = []
         for i, chunk in enumerate(utils.chunk_list(domains, 1000)):
             list_name = f"{self.name_prefix} - {i + 1:03d}"
